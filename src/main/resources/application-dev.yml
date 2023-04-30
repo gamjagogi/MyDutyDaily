@@ -1,0 +1,49 @@
+server:
+  port: 10000
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+mvc:
+  view:
+    prefix: /WEB-INF/views/
+    suffix: .jsp
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+    open-in-view: false
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      enabled: true
+web:
+  resources:
+    add-mappings: false
+  # 404제어권 가져오기
+
+  # hibernateLazyInitializer 오류 해결법
+  # jackson:
+  #  serialization:
+  #    fail-on-empty-beans: false
+logging:
+  level:
+    '[dailyDuty.hjson.dailydutyapi]': DEBUG # 디버그 레벨부터 에러 확인할수 있게 설정하기
+    '[org.hibernate.typer]': TRACE # 콘솔 쿼리에 ? 에 주입된 값 보기
+
+file:
+  path: ./upload/
